@@ -78,6 +78,41 @@
     tr {
       height: 50px;
     }
+
+    .input-update {
+      width: 90%;
+      padding: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+      outline: none;
+    }
+
+    .button-update {
+      text-align: left;
+      border: 2px solid #fa9770;
+      font-size: 12px;
+      color: #fa9770;
+      background-color: #fff;
+      font-weight: bold;
+      padding: 8px 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .button-delete {
+      text-align: left;
+      border: 2px solid #71fadc;
+      font-size: 12px;
+      color: #71fadc;
+      background-color: #fff;
+      font-weight: bold;
+      padding: 8px 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.4s;
+      outline: none;
+    }
   </style>
 </head>
 
@@ -92,16 +127,30 @@
           <input type="submit" value="追加" class="button-add">
         </form>
         <table>
-          <thead>
+          <tbody>
             <tr>
               <th>作成日</th>
               <th>タスク名</th>
               <th>更新</th>
               <th>削除</th>
             </tr>
-          </thead>
-          <tbody>
-            @yield('content')
+            <tr>
+              <td></td>
+              <form action="/todo/update" method="POST">
+              <td>
+                <input type="text" class="input-update" value="{{$itams->content}}" name="content">
+              </td>
+              <td>
+                <input type="submit" value="更新" class="button-update">
+              </td>
+              </form>
+              <td>
+                <form action="/todo/delete" method="POST">
+                  <input type="hidden" name="content" value="">
+                  <input type="submit" value="削除" class="button-delete">
+                </form>
+              </td>
+            </tr>
           </tbody>
         </table>
       </div>

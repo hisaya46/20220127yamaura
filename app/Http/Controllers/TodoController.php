@@ -9,7 +9,7 @@ class TodoController extends Controller
 {
     public function index()
     {
-        $items = DB::select('select * from items');
+        $items = DB::table('items')->get();
         return view('index', ['items' => $items]);
     }
     public function create(Request $request)
@@ -30,7 +30,7 @@ class TodoController extends Controller
     }
     public function delete(Request $request)
     {
-        $param = DB::find($request->id);
+        $param = DB::find($request->content);
         $param->delete();
         return redirect('/');
     }
