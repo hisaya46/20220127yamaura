@@ -137,7 +137,8 @@
             @foreach ($items as $item)
             <tr>
               <td>{{$item->updated_at}}</td>
-              <form action="/todo/update" method="POST">@csrf
+              <form action="/todo/update" method="POST">
+                @csrf
                 <input type="hidden" name="_token" value="{{$item->id}}">
                 <td><input type="text" class="input-update" name="content" value="{{$item->content}}"></td>
                 <td><button class="button-update">更新</button></td>
