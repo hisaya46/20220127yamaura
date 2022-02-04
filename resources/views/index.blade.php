@@ -134,23 +134,23 @@
               <th>更新</th>
               <th>削除</th>
             </tr>
+            @foreach ($items as $item)
             <tr>
-              <td></td>
-              <form action="/todo/update" method="POST">
-              <td>
-                <input type="text" class="input-update" value="{{$itams->content}}" name="content">
-              </td>
-              <td>
-                <input type="submit" value="更新" class="button-update">
-              </td>
+              <td>{{$item->updated_at}}</td>
+              <form action="/todo/update" method="POST">@csrf
+                <input type="hidden" name="_token" value="{{$item->id}}">
+                <td><input type="text" class="input-update" name="content" value="{{$item->content}}"></td>
+                <td><button class="button-update">更新</button></td>
               </form>
               <td>
                 <form action="/todo/delete" method="POST">
-                  <input type="hidden" name="content" value="">
-                  <input type="submit" value="削除" class="button-delete">
+                  @csrf
+                  <input type="hidden" name="_token" value="{{$item->id}}">
+                  <button class="button-delete">削除</button>
                 </form>
               </td>
             </tr>
+            @endforeach
           </tbody>
         </table>
       </div>
