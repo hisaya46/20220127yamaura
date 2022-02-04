@@ -139,14 +139,14 @@
               <td>{{$item->updated_at}}</td>
               <form action="/todo/update" method="POST">
                 @csrf
-                <input type="hidden" name="_token" value="{{$item->id}}">
+                <input type="hidden" name="id" value="{{$item->id}}">
                 <td><input type="text" class="input-update" name="content" value="{{$item->content}}"></td>
                 <td><button class="button-update">更新</button></td>
               </form>
               <td>
                 <form action="/todo/delete" method="POST">
                   @csrf
-                  <input type="hidden" name="_token" value="{{$item->id}}">
+                  <input type="hidden" name="id" value="{{$item->id}}">
                   <button class="button-delete">削除</button>
                 </form>
               </td>
