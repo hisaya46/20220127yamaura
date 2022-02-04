@@ -119,8 +119,15 @@
 <body>
   <div class="container">
     <div class="card">
-      <p class="title mb-15">Todo List</p>
+      <h1 class="title mb-15">Todo List</h1>
       <div class="todo">
+        @if (count($errors) > 0)
+        <ul>
+          @foreach ($errors->all() as $error)
+          <li>{{$error}}</li>
+          @endforeach
+        </ul>
+        @endif
         <form action="/todo/create" method="post" class="flex between mb-30">
           @csrf
           <input type="text" name="content" class="input-add">
